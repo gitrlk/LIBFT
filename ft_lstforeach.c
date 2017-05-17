@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstforeach.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecarol <jecarol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/11 17:36:32 by jecarol           #+#    #+#             */
-/*   Updated: 2017/02/11 17:36:33 by jecarol          ###   ########.fr       */
+/*   Created: 2017/03/10 11:59:09 by jecarol           #+#    #+#             */
+/*   Updated: 2017/03/10 11:59:22 by jecarol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strdup(const char *s1)
+void	ft_lstforeach(t_list *lst, void (*f)())
 {
-	char	*result;
-	int		i;
-	int		j;
-
-	i = 0;
-	if (!(result = (char*)malloc(sizeof(char) * (ft_strlen(s1) + 1))))
-		return (NULL);
-	j = (ft_strlen(s1));
-	while (j >= 0)
+	while (lst)
 	{
-		result[i] = s1[i];
-		i++;
-		j--;
+		f(lst->content);
+		lst = lst->next;
 	}
-	return (result);
 }

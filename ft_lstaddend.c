@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstaddend.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecarol <jecarol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/11 17:36:32 by jecarol           #+#    #+#             */
-/*   Updated: 2017/02/11 17:36:33 by jecarol          ###   ########.fr       */
+/*   Created: 2017/03/08 19:55:44 by jecarol           #+#    #+#             */
+/*   Updated: 2017/04/11 19:11:12 by jecarol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strdup(const char *s1)
+void			ft_lstaddend(t_list **alst, t_list *new)
 {
-	char	*result;
-	int		i;
-	int		j;
+	t_list		*tmp;
 
-	i = 0;
-	if (!(result = (char*)malloc(sizeof(char) * (ft_strlen(s1) + 1))))
-		return (NULL);
-	j = (ft_strlen(s1));
-	while (j >= 0)
+	if (*alst)
 	{
-		result[i] = s1[i];
-		i++;
-		j--;
+		tmp = *alst;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = new;
 	}
-	return (result);
+	else
+		*alst = new;
 }

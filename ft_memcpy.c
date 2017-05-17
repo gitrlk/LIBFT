@@ -6,7 +6,7 @@
 /*   By: jecarol <jecarol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/22 19:57:55 by jecarol           #+#    #+#             */
-/*   Updated: 2016/12/13 14:09:13 by jecarol          ###   ########.fr       */
+/*   Updated: 2017/03/23 14:47:25 by jecarol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 		dest[i] = source[i];
 		i++;
 	}
+	dest[i] = '\0';
 	return (dst);
 }

@@ -6,13 +6,13 @@
 #    By: jecarol <jecarol@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/07 12:20:17 by jecarol           #+#    #+#              #
-#    Updated: 2016/12/14 15:48:28 by jecarol          ###   ########.fr        #
+#    Updated: 2017/04/11 20:24:17 by jecarol          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-CFLAGS += -Wall -Wextra -Werror
+CFLAGS += -Wall -Wextra -Werror -g
 
 SRC = 	ft_atoi.c \
 	ft_putchar.c \
@@ -51,6 +51,7 @@ SRC = 	ft_atoi.c \
 	ft_memcpy.c \
 	ft_memccpy.c \
 	ft_memmove.c \
+	ft_freejoin.c \
 	ft_memchr.c \
 	ft_memcmp.c \
 	ft_memalloc.c \
@@ -73,18 +74,32 @@ SRC = 	ft_atoi.c \
 	ft_lstiter.c \
 	ft_lstmap.c \
 	ft_printstrs.c \
+	ft_lstaddend.c \
+	ft_lstforeach.c \
+
+CC = @cc
 
 OBJ = $(SRC:.c=.o)
+
+# COLOR
+C_GOOD = "\033[32m"
+C_DURING = "\033[36m"
+
+# MESSAGE
+SUCCESS = $(C_GOOD)COMPILATION SUCCEEDED
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+	@echo $(C_DURING)"Compiling" [ $(NAME) . . . ]
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
+	@echo $(SUCCESS)
+
 clean:
-	/bin/rm -f $(OBJ)
+	@/bin/rm -f $(OBJ)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 
 re: fclean all

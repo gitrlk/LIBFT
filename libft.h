@@ -6,7 +6,7 @@
 /*   By: jecarol <jecarol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/22 18:48:21 by jecarol           #+#    #+#             */
-/*   Updated: 2016/12/14 15:49:07 by jecarol          ###   ########.fr       */
+/*   Updated: 2017/04/19 17:10:37 by jecarol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,24 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
+# include <stdarg.h>
+
+# define DEFAULT "\033[0m"
+# define BLACK "\033[30m"
+# define RED "\033[31m"
+# define GREEN "\033[32m"
+# define YELLOW "\033[33m"
+# define BLUE "\033[34m"
+# define PURPLE "\033[35m"
+# define TURQUOISE "\033[36m"
+# define REDCOVER "\033[41m"
+# define GREENCOVER "\033[42m"
+# define YELLOWCOVER "\033[43m"
+# define BLUECOVER "\033[44m"
+# define PURPLECOVER "\033[45m"
+# define UGLYBLUECOVER "\033[46m"
+# define GREYCOVER "\033[47m"
+# define TEST "\033[51m"
 
 typedef struct		s_list
 {
@@ -23,6 +41,8 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+void				ft_lstaddend(t_list **alst, t_list *new);
+char				*ft_freejoin(char *s1, char *s2);
 size_t				ft_strlen(const char *str);
 char				*ft_strdup(const char *s1);
 int					ft_atoi(const char *str);
@@ -83,5 +103,6 @@ void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstiter(t_list *lst, void(*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void				ft_printstrs(char **str);
+void				ft_lstforeach(t_list *lst, void(*f)());
 
 #endif
